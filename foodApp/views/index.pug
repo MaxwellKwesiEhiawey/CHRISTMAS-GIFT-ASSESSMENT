@@ -1,5 +1,24 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  header.header
+    .brand
+      //- button(onclick='openMenu()')
+      //-   | &#x2630;
+      img(src="../public/images/Amalitech logo.jpg")  
+      a(href='index.html') #{title}
+    .dropdown
+      button.dropbtn
+        | Menu
+        i.fa.fa-caret-down
+      .dropdown-content
+        a(href='#') Today's Menu
+        a(href='#') All Food
+        //- a(href='#') Link 3
+    .header-links
+      //- img(src="/public/images/Amalitech logo.jpg", alt="")
+      a(href='cart.html') Cart
+      a(href='signin.html') Sign In
+
+
+
