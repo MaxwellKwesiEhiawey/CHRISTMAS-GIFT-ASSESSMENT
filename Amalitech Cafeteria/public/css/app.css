@@ -1,0 +1,138 @@
+/*
+* Author: Gursharan, Devin, James
+* Description: This is the custom css file for the whole website
+* Date: September 25, 2019
+*/
+
+.card-container {
+    width: calc(100% - 30em);
+    margin: 10px auto;
+}
+
+.custom {
+    margin: 5px;
+}
+
+.banner{
+    position: relative;
+    margin-top:3.5em;
+}
+
+.letter-spacing-5 {
+    letter-spacing: 0.5em;
+}
+
+.text-size-small {
+    font-size: 0.9em;
+}
+
+.navbar{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    overflow: hidden;
+}
+
+a.img-thumbnail.rounded > input{
+    width: 100%;
+}
+
+footer {
+    position: fixed;
+    bottom:0px;
+    width: 100%;
+}
+
+#centerForm,
+#centerForm_B,
+#centerForm_C {
+    background: white;
+    border-radius: 10px;
+    top: 75px;
+}
+
+@media(min-width: 768px) {
+    #centerForm {
+        left: 33%;
+        width: 700px;
+        position: fixed;
+    }
+    #centerForm_B {
+        left: 27%;
+        width: 700px;
+        position: fixed;
+    }
+    #centerForm_C {
+        left: 5%;
+        max-width: 90%;
+        position: fixed;
+        height: calc(100% - 10em);
+        overflow: scroll;
+    }
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+th {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#restaurant-card-space {
+    width: 15rem;
+    visibility: hidden;
+}
+
+@media(min-width: 1497px) {
+    .card-container {
+        width: calc( 100% - 60em);
+        
+    }
+}
+
+#restaurant-card {
+    width: 15rem;
+}
+
+@media(max-width: 996px) {
+    #restaurant-card {
+        width: 150px!important;
+    }
+}
+
+@media(max-width: 657px) {
+    .card-container {
+        width: 100%;
+        ;
+    }
+    #restaurant-card {
+        flex: 0 0 300px !important;
+    }
+}
+
+.background_form {
+    background-image: url('Images/background.png');
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+.center_chart {
+    text-align: center;
+}
