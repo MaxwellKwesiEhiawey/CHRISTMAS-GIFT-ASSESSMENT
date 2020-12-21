@@ -49,7 +49,7 @@ exports.getIndex = (req, res, next) => {
     .then(products => {
       res.render('shop/index', {
         prods: products,
-        pageTitle: 'Shop',
+        pageTitle: 'Amalitech Cafeteria',
         path: '/'
       });
     })
