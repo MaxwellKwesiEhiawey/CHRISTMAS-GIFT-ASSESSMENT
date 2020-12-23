@@ -10,11 +10,39 @@
         <% if (errorMessage) { %>
             <div class="user-message user-message--error"><%= errorMessage %></div>
         <% } %>
+
         <form class="login-form" action="/signup" method="POST">
+            <div class="form-control">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name">
+            </div>
             <div class="form-control">
                 <label for="email">E-Mail</label>
                 <input type="email" name="email" id="email">
             </div>
+
+            <div class="form-control">
+                <label for="usertype">Usertype</label>
+               <select name="usertype" id="usertype">
+                   <option value="">-None-</option>
+                   <option value="trainee">Trainee</option>
+                   <option value="staff">Staff</option>
+               </select>
+            </div>
+            <div class="form-control">
+                <label for="userid">UserID</label>
+                <input type="text" name="userid" id="userid">
+            </div>
+            <div class="form-control">
+                <label for="department">Department</label>
+                <select name="department" id="department">
+                    <option value="">-None-</option>
+                    <option value="sd">SD</option>
+                    <option value="sfccd">SFCCD</option>
+                    <option value="ds">DS</option>
+                    <option value="os">OS</option>
+                </select>
+             </div>
             <div class="form-control">
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password">

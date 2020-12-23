@@ -10,7 +10,7 @@
 }
 
 .orders__item {
-  box-shadow: 0 2px 8px rgba(145, 89, 89, 0.26);
+  box-shadow: 0 2px 8px #690009;
   padding: 1rem;
   margin-bottom: 1rem;
 }
@@ -24,8 +24,8 @@
 .orders__products-item {
     margin: 0.5rem 0;
     padding: 0.5rem;
-    border: 1px solid #c8dd0e;
-    color: #c8dd0e;
+    border: 1px solid #690009;
+    color: #ee1325;
 }
 
 

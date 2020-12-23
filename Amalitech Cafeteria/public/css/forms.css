@@ -1,13 +1,23 @@
+.login-form {
+  background-color: #690009;
+  padding: 10px;
+  color: #ffa33b;
+}
 .form-control {
   margin: 1rem 0;
 }
 
 .form-control label,
 .form-control input,
-.form-control textarea {
+.form-control textarea,
+.form-control select {
   display: block;
   width: 100%;
   margin-bottom: 0.25rem;
+}
+.form-control select{
+  padding: 5px;
+  height: 25px;
 }
 
 .form-control input,
@@ -19,5 +29,5 @@
 
 .form-control input:focus,
 .form-control textarea:focus {
-  outline-color: #00695c;
+  outline-color:  #f8e3cb;
 }

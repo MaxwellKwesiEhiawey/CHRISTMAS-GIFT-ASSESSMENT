@@ -16,14 +16,14 @@ exports.getProducts = (req, res, next) => {
     });
 };
 
-exports.getProducts = (req, res, next) => {
+exports.getTodayProducts = (req, res, next) => {
   Product.find()
     .then(products => {
       console.log(products);
       res.render('shop/product-for-today', {
         prods: products,
         pageTitle: 'Products for today',
-        path: '/products'
+        path: '/products-today'
       });
     })
     .catch(err => {
