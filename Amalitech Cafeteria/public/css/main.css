@@ -9,10 +9,30 @@ body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   background-color: #f8e2e2;
-  /* background-image:url("./image/background.png") ; */
+  /* background-image:url("./image/blog_item_04.jpg") ;
+  background-size: cover; */
 }
 .logo-img{
   padding: 0.2rem;
+}
+.text-center{
+  text-align: center;
+}
+
+table {
+  border-collapse:collapse;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 20px;
+  position: center;
+  height: 50px;
+}
+
+th {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  text-align: -internal-center;
 }
 main {
   padding: 1rem;
