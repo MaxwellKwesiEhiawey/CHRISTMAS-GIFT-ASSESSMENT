@@ -6,6 +6,37 @@
     <%- include('../includes/navigation.ejs') %>
 
     <main>
-        <h1>Home Page</h1>
+        <div class="cool-page">
+            <h2>Welcome</h2>
+            <p>What would you like to eat today ?</p>
+        </div>
+     <% if (prods.length > 0) { %>
+        <div class="grid">
+            <% for (let product of prods) { %>
+                <article class="card product-item">
+                    <header class="card__header">
+                        <h1 class="product__title"><%= product.title %></h1>
+                    </header>
+                    <div class="card__image">
+                        <a href="/products/<%= product._id %>" class="img_link"><img src="<%= product.imageUrl %>" alt="<%= product.title %>"></a>
+                    </div>
+                    <div class="card__content">
+                        <h2 class="product__price">GH₵<%= product.price %></h2>
+                        <p class="product__description"><%= product.description %></p>
+                    </div>
+                    <div class="card__actions">
+                        <a href="/products/<%= product._id %>" class="btn">Details</a>
+                        <% if (isAuthenticated) { %>
+                            <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                        <% } %>
+                    </div>
+                </article>
+            <% } %>
+        </div>
+    <% } else { %>
+        <h1>No Products Found!</h1>
+    <% } %>
+</main>
     </main>
 <%- include('../includes/end.ejs') %>
+<%- include('../includes/footer.ejs') %>
