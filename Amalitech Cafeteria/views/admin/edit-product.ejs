@@ -21,6 +21,15 @@
                 <input type="number" name="price" id="price" step="0.01" value="<% if (editing) { %><%= product.price %><% } %>">
             </div>
             <div class="form-control">
+                <label for="category">Category</label>
+                <select name="category" id="category">
+                    <option value="">- None -</option>
+                    <option value="all">All Menu</option>
+                    <option value="today">Today's Menu</option>
+                </select>
+                <!-- <textarea name="description" id="description" rows="5"><% if (editing) { %><%= product.description %><% } %></textarea> -->
+            </div>
+            <div class="form-control">
                 <label for="description">Description</label>
                 <textarea name="description" id="description" rows="5"><% if (editing) { %><%= product.description %><% } %></textarea>
             </div>
@@ -32,4 +41,4 @@
             <button class="btn" type="submit"><% if (editing) { %>Update Product<% } else { %>Add Product<% } %></button>
         </form>
     </main>
-<%- include('../includes/end.ejs') %>
+    <%- include('../includes/footer.ejs') %>

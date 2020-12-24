@@ -19,21 +19,6 @@ body {
   text-align: center;
 }
 
-table {
-  border-collapse:collapse;
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 20px;
-  position: center;
-  height: 50px;
-}
-
-th {
-  display: table-cell;
-  vertical-align: inherit;
-  font-weight: bold;
-  text-align: -internal-center;
-}
 main {
   padding: 1rem;
   margin: auto;
@@ -75,12 +60,17 @@ form {
   background-color: #690009;
   color: #ffa33b;
   padding: 0 4rem;
-  height: 70px;
-}
-.footer-panel{
+  height: 3.5rem;
   text-align: center;
 }
-
+footer ul{
+  list-style: none;
+  padding: 2px;
+}
+footer ul li{
+  display: inline-block;
+  margin: 0px 50px;
+}
 .main-header__nav {
   height: 100%;
   width: 100%;

@@ -35,7 +35,9 @@ exports.postLogin = (req, res, next) => {
   const password = req.body.password;
   User.findOne({ email: email })
     .then(user => {
-      if (!user) {
+     const isUserValid = !user;
+      if (isUserValid) {
+       
         req.flash('error', 'Invalid email or password.');
         return res.redirect('/login');
       }
@@ -50,6 +52,7 @@ exports.postLogin = (req, res, next) => {
               res.redirect('/');
             });
           }
+          
           req.flash('error', 'Invalid email or password.');
           res.redirect('/login');
         })
@@ -62,9 +65,7 @@ exports.postLogin = (req, res, next) => {
 };
 
 exports.postSignup = (req, res, next) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  const confirmPassword = req.body.confirmPassword;
+  const {name,email,usertype,userid,department} = req.body;
   User.findOne({ email: email })
     .then(userDoc => {
       if (userDoc) {
@@ -72,15 +73,18 @@ exports.postSignup = (req, res, next) => {
         return res.redirect('/signup');
       }
       return bcrypt
-        .hash(password, 12)
-        .then(hashedPassword => {
+        // .hash(password, 9)
+    
           const user = new User({
+            name: name,
             email: email,
-            password: hashedPassword,
+            usertype: usertype,
+            userid: userid,
+            department:department,
+            status:'pending',
             cart: { items: [] }
           });
-          return user.save();
-        })
+          user.save()
         .then(result => {
           res.redirect('/login');
         });
