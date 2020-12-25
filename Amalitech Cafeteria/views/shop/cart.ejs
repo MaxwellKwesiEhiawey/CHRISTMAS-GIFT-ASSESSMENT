@@ -27,7 +27,22 @@
                                <td> <h1><%= p.productId.title %></h1></td>
                                <td> <h1>GH₵<%= p.productId.price %></h1></td>
                                <!-- <td> <h1><%= p.productId.price %></h1></td> -->
-                                <td><h2><%= p.quantity %></h2></td>
+                                <td><h2><%= p.quantity %></h2>
+                                    <body>
+                                        <body>
+                                          <input id=demoInput type=number min=1 max=100>
+                                          <button onclick="increment()">+</button>
+                                          <button onclick="decrement()">-</button>
+                                          <script>
+                                              function increment() {
+                                                  document.getElementById('demoInput').stepUp();
+                                              }
+                                              function decrement() {
+                                                  document.getElementById('demoInput').stepDown();
+                                              }
+                                          </script>
+                                          </body>
+                                      </body></td>
                                 <td><form action="/cart-delete-item" method="POST">
                                     <input type="hidden" value="<%= p.productId._id %>" name="productId">
                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
