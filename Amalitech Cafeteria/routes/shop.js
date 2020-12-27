@@ -25,4 +25,12 @@ router.post('/create-order', isAuth, shopController.postOrder);
 
 router.get('/orders', isAuth, shopController.getOrders);
 
+router.post('/checkout', isAuth, shopController.postCheckout);
+
+router.get('/checkout', isAuth, shopController.getCheckout);
+
+router.post('/payment', isAuth, shopController.postPayment);
+
+router.get('/payment', isAuth, shopController.getPayment);
+
 module.exports = router;

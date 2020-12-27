@@ -22,4 +22,10 @@ router.post('/edit-product', isAuth, adminController.postEditProduct);
 
 router.post('/delete-product', isAuth, adminController.postDeleteProduct);
 
+router.get('/users', isAuth, adminController.getUsers);
+
+router.get('/user-update', isAuth, adminController.getUserUpdate);
+
+router.post('/user-update', isAuth, adminController.postUserUpdate);
+
 module.exports = router;

@@ -1,0 +1,35 @@
+.checkout-title{
+    text-align: center;
+}
+
+.checkout-summary-title{
+    margin-top: 0px;
+    border-bottom: 1px solid  rgb(195, 189, 189);
+}
+
+.checkout-container{
+    margin: auto;
+    width: 80%;
+}
+
+.checkout-billing{
+    float:left;
+    width:60%;
+    overflow:hidden;
+}
+
+.checkout-summary{
+    float:left;
+    width:30%;
+    overflow:hidden;
+    margin-top: 2rem;
+    margin-left: 30px;
+    padding: 20px;
+    border: 1px solid rgb(195, 189, 189);
+} 
+
+.checkout-summary-input-item{
+    background: transparent;
+   border: none;
+   font-size: 16px;
+}

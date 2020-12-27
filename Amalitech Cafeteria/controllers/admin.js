@@ -1,4 +1,6 @@
+const bcrypt = require('bcryptjs');
 const Product = require('../models/product');
+const User = require('../models/user');
 
 exports.getAddProduct = (req, res, next) => {
   res.render('admin/edit-product', {
@@ -82,7 +84,7 @@ exports.getProducts = (req, res, next) => {
     // .select('title price -_id')
     // .populate('userId', 'name')
     .then(products => {
-      console.log(products);
+      // console.log(products);
       res.render('admin/products', {
         prods: products,
         pageTitle: 'Admin Products',
@@ -100,4 +102,60 @@ exports.postDeleteProduct = (req, res, next) => {
       res.redirect('/admin/products');
     })
     .catch(err => console.log(err));
+};
+
+exports.getUsers = (req, res, next) => {
+  User.find()
+    .then(users => {
+      res.render('admin/users', {
+        users: users,
+        pageTitle: 'Users',
+        path: '/admin/users'
+      });
+    })
+    .catch(err => console.log(err));
+};
+
+
+exports.postUserUpdate = (req, res, next) => {
+  const {email,status,password,confirmPassword} = req.body;
+  if(password === confirmPassword){
+    bcrypt.hash(password, 9)
+  .then(hashPassword=>{
+    console.log(hashPassword)
+    User.updateOne({ email: email }, {status:status, password:hashPassword}, function(err, docs){
+      if (err){ 
+        console.log(err) 
+        req.flash('error', 'An error occurred. Please try again.');
+        return res.redirect('/admin/users');
+    }
+     return res.redirect('/admin/users')
+    
+    } )
+  })
+    .catch(err => {
+      console.log('An error occurred. Please try again')
+      req.flash('error', 'An error occurred. Please try again');
+      return res.redirect('/admin/users');
+    });
+  }
+  else{
+    console.log('Password mismatch')
+    req.flash('error', 'Password mismatch');
+    return res.redirect('/admin/users');
+  }
+};
+
+exports.getUserUpdate = (req, res, next) => {
+  let message = req.flash('error');
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
+  res.render('admin/users', {
+    users: users,
+    pageTitle: 'Users',
+    path: '/admin/users'
+  });
 };

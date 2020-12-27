@@ -37,8 +37,16 @@ exports.postLogin = (req, res, next) => {
     .then(user => {
      const isUserValid = !user;
       if (isUserValid) {
-       
         req.flash('error', 'Invalid email or password.');
+        return res.redirect('/login');
+      }
+      
+      if(user.status === 'pending'){
+        req.flash('error', 'Account approval pending. Contact system administrator');
+        return res.redirect('/login');
+      }
+      else if(user.status === 'suspended'){
+        req.flash('error', 'Account suspended. Contact system administrator');
         return res.redirect('/login');
       }
       bcrypt
@@ -72,25 +80,24 @@ exports.postSignup = (req, res, next) => {
         req.flash('error', 'E-Mail exists already, please pick a different one.');
         return res.redirect('/signup');
       }
-      return bcrypt
-        // .hash(password, 9)
-    
-          const user = new User({
-            name: name,
-            email: email,
-            usertype: usertype,
-            userid: userid,
-            department:department,
-            status:'pending',
-            cart: { items: [] }
-          });
-          user.save()
-        .then(result => {
-          res.redirect('/login');
+        const user = new User({
+          name: name,
+          email: email,
+          usertype: usertype,
+          userid: userid,
+          department:department,
+          password:'na',
+          status:'pending',
+          cart: { items: [] }
         });
+        user.save()
+      .then(result => {
+        res.redirect('/login');
+      });
     })
     .catch(err => {
-      console.log(err);
+      req.flash('error', 'An error occurred. Please try again');
+      return res.redirect('/signup');
     });
 };
 

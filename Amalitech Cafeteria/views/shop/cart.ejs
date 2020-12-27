@@ -3,10 +3,11 @@
      <%- include('../includes/navigation.ejs') %>
     </head>
 
-    <body class="body-tag">
+    <body class="body-tag" onload="onLoad()">
        
         <main>
             <% if (products.length > 0) { %>
+                <%- console.log('cart: ', csrfToken) %>
                 <div id="cart-item-container">
                 <h1 data-v-5a78baf3="" class="text-center cart-text m-auto">Your Cart</h1>
                 <table id="cart-item-head">
@@ -25,7 +26,7 @@
                             <tr>
                                <td class="cart_item"><img src="<%= p.productId.imageUrl %>" alt=""></td> 
                                <td> <h1><%= p.productId.title %></h1></td>
-                               <td> <h1>GH₵<%= p.productId.price %></h1></td>
+                               <td> <h1 id='item-price'>GH₵<%= p.productId.price %></h1></td>
                                <!-- <td> <h1><%= p.productId.price %></h1></td> -->
                                 <td><!--h2><%= p.quantity %></!--h2-->
                                           <button onclick="decrement()">-</button>
@@ -37,16 +38,16 @@
                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                     <button class="btn danger" type="submit">Delete</button>
                                 </form></td>
-                                <td><h1>GH₵<%= p.productId.price * document.getElementById("demoInput") %></h1></td>
+                                <td><h1 id='item-total'></h1></td>
                             </tr>
                         <% }) %>
                 </table>
 
                 <hr>
                 <div class="centered">
-                    <form action="/create-order" method="POST">
+                    <form action="/checkout" method="POST">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                        <button type="submit" class="btn">Order Now!</button>
+                        <button type="submit" class="btn">Proceed to Checkout</button>
                     </form>
                 </div>
             </div>
@@ -56,3 +57,6 @@
         </main>
         
         <%- include('../includes/footer.ejs') %>
+        <script src="/js/cart.js"></script>
+    </body>
+    </html>

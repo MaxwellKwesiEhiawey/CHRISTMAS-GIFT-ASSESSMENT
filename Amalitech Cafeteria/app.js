@@ -11,8 +11,7 @@ const flash = require('connect-flash');
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
-const MONGODB_URI =
-  'mongodb+srv://Max:MongoDB20Amali20@cluster01.3dmw7.mongodb.net/AmalitechCafeteria?retryWrites=true&w=majority';
+const MONGODB_URI = 'mongodb+srv://Max:MongoDB20Amali20@cluster01.3dmw7.mongodb.net/AmalitechCafeteria?retryWrites=true&w=majority';
 
 const app = express();
 const store = new MongoDBStore({
@@ -55,6 +54,8 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isLoggedIn;
+  (req.session.user)? delete req.session.user["password"]:"";
+  res.locals.user = req.session.user;
   res.locals.csrfToken = req.csrfToken();
   next();
 });

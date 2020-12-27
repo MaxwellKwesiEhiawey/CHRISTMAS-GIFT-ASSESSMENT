@@ -1,10 +1,12 @@
 const Product = require('../models/product');
 const Order = require('../models/order');
+const Checkout = require('../models/checkout');
+const Payment = require('../models/payment');
 
 exports.getProducts = (req, res, next) => {
   Product.find()
     .then(products => {
-      console.log(products);
+      // console.log(products);
       res.render('shop/product-list', {
         prods: products,
         pageTitle: 'All Products',
@@ -19,7 +21,7 @@ exports.getProducts = (req, res, next) => {
 exports.getTodayProducts = (req, res, next) => {
   Product.find()
     .then(products => {
-      console.log(products);
+      // console.log(products);
       res.render('shop/product-for-today', {
         prods: products,
         pageTitle: 'Products for today',
@@ -132,3 +134,84 @@ exports.getOrders = (req, res, next) => {
     })
     .catch(err => console.log(err));
 };
+
+exports.postCheckout = (req, res, next) => {
+  req.user
+    .populate('cart.items.productId')
+    .execPopulate()
+    .then(user => {
+      const products = user.cart.items.map(i => {
+        return { quantity: i.quantity, product: { ...i.productId._doc } };
+      });
+      const checkout = new Checkout({
+        user: {
+          email: req.user.email,
+          userId: req.user
+        },
+        products: products
+      });
+      return checkout.save();
+    })
+    .then(() => {
+      res.redirect('/checkout');
+    })
+    .catch(err => {
+      console.log(err);});
+};
+
+exports.getCheckout = (req, res, next) => {
+  Checkout.find({ 'user.userId': req.user._id })
+    .then(orders => {
+      console.log(orders)
+      res.render('shop/checkout', {
+        path: '/checkout',
+        pageTitle: 'Checkout',
+        orders: orders
+      });
+    })
+    .catch(err => console.log(err));
+};
+
+exports.postPayment = (req, res, next) => {
+  const {name, contact, address, country, state,city, zip, total} = req.body;
+  req.user
+    .populate('cart.items.productId')
+    .execPopulate()
+    .then(user => {
+      const products = user.cart.items.map(i => {
+        return { product: { ...i.productId._doc }, total: total };
+      });
+      const payment = new Payment({
+        user: {
+          email: req.user.email,
+          userId: req.user,
+          name: name,
+          contact: contact,
+          address: address,
+          country: country,
+          state: state,
+          city: city,
+          zip: zip
+        },
+        products: products
+      });
+      return payment.save();
+    })
+    .then(() => {
+      res.redirect('/payment');
+    })
+    .catch(err => console.log(err));
+};
+
+exports.getPayment = (req, res, next) => {
+  Payment.find({ 'user.userId': req.user._id })
+    .then(orders => {
+      res.render('shop/payment', {
+        path: '/payment',
+        pageTitle: 'Payment',
+        orders: orders
+      });
+    })
+    .catch(err => console.log(err));
+};
+

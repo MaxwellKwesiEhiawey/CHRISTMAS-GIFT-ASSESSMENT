@@ -7,7 +7,7 @@
         <main>
             <% if (orders.length <= 0) { %>
                 <h1>Nothing there!</h1>
-            <% } else { %>
+            <% } else { console.log('orders: ', csrfToken)%>
                 <ul class="orders">
                     <% orders.forEach(order => { %>
                         <li class="orders__item">
