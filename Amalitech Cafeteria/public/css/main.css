@@ -4,23 +4,35 @@
   box-sizing: border-box;
 }
 
+.home__image{
+  background-image:url("../images/dinner_item.jpg");
+  height: 150px;
+  width: 100%;
+  padding: 5px 40px;
+  color: rgb(201, 9, 57);
+font-size: 22px;
+}
+.tag-header{
+  padding: 0 80px;
+}
+
 body {
-  padding: 0;
+  padding: 0.1px;
   margin: 0;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  background-color:  #f3efef;
+  background-color:  #c2c2c2;
   /* background-image:url("./image/blog_item_04.jpg") ;
   background-size: cover; */
 }
 .logo-img{
-  padding: 0.2rem;
+  padding: 3rem;
 }
 .text-center{
   text-align: center;
 }
 
 main {
-  padding: 1rem;
+  padding: 0rem;
   margin: auto;
 }
 
@@ -229,6 +241,7 @@ footer ul li{
 .card__header,
 .card__content {
   padding: 1rem;
+  color: #f03333;
 }
 
 .card__header h1,

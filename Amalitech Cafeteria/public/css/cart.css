@@ -21,7 +21,7 @@
 */
 user agent stylesheet
 #cart-item-container{
-  border: 1px solid black; 
+  border: 1px solid rgb(36, 0, 0); 
   display: flex;
   justify-content: center;
 }
