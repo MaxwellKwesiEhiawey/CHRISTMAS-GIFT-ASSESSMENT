@@ -1,5 +1,5 @@
+require('dotenv').config();
 const path = require('path');
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -7,7 +7,6 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
-
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
@@ -65,11 +64,14 @@ app.use(shopRoutes);
 app.use(authRoutes);
 
 app.use(errorController.get404);
-
+const PORT = process.env.PORT;
+const HOST = process.env.HOST;
 mongoose
   .connect(MONGODB_URI)
   .then(result => {
-    app.listen(8000);
+    app.listen(PORT, HOST, function(){ 
+      console.log(`app listen on port ${PORT}`);
+    });
   })
   .catch(err => {
     console.log(err);
