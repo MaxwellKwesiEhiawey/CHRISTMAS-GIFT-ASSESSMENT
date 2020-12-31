@@ -11,52 +11,52 @@
                 <% if (orders.length <= 0) { %>
                     <h1>Nothing to checkout</h1>
                 <% } else {console.log('checkout: ', csrfToken) %>
-                    <h1 class='checkout-title'>Choose Shipping Address</h1>
+                    <!-- <h1 class='checkout-title'>Summary</h1> -->
                     <form action="/payment" method="POST">
-                        <div class="checkout-billing">
-                            <div class="form-control">
+                        <!-- <div class="checkout-billing"> -->
+                            <!-- <div class="form-control">
                                 <label for="name">Full Name</label>
                                 <input type="text" name="name" id="name" required>
-                            </div>
-                            <div class="form-control">
+                            </div> -->
+                            <!-- <div class="form-control">
                                 <label for="contact">Phone Number</label>
                                 <input type="tel" name="contact" id="contact" required>
                             </div>
                             <div class="form-control">
                                 <label for="address">Address Line 1</label>
                                 <input type="text" name="address" id="address" required>
-                            </div>
+                            </div> -->
                         
-                            <div class="form-control">
+                            <!-- <div class="form-control">
                                 <label for="country">Country</label>
                             <select name="country" id="country"  required>
                                 <option value="">-None-</option>
                                 <option value="ghana">Ghana</option>
-                                <!-- <option value="nigeria">Nigeria</option> -->
+                                <option value="nigeria">Nigeria</option>
                             </select>
-                            </div>
-                            <div class="form-control">
+                            </div> -->
+                            <!-- <div class="form-control">
                                 <label for="state">State</label>
                             <select name="state" id="state" required>
                                 <option value="">-None-</option>
                                 <option value="accra">Accra</option>
                                 <option value="takoradi">Takoradi</option>
-                                <!-- <option value="nigeria">Nigeria</option> -->
+                                <option value="nigeria">Nigeria</option>
                             </select>
-                            </div>
-                            <div class="form-control">
+                            </div> -->
+                            <!-- <div class="form-control">
                                 <label for="city">City</label>
                             <select name="city" id="city" required >
                                 <option value="">-None-</option>
                                 <option value="james_town">James Town</option>
-                                <!-- <option value="nigeria">Nigeria</option> -->
+                                <option value="nigeria">Nigeria</option>
                             </select>
-                            </div>
-                            <div class="form-control">
+                            </div> -->
+                            <!-- <div class="form-control">
                                 <label for="zip">Zip Code</label>
                                 <input type="text" name="zip" id="zip"  required>
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
                         <div class="checkout-summary">
                             <h1 class="checkout-summary-title">Order Summary</h1>
                             <% var total = 0; %>
@@ -66,7 +66,7 @@
                                 <% }); %>
                             <% }); %>
                             <p class="checkout-summary-item">Menu Total: GH <%= total %></p>
-                            <p>Grand Total: GH 
+                            <p>Grand Total: GH₵
                                 <input class="checkout-summary-input-item" type="number" id="total" name='total' value='<%= total %>' readonly="true">
                             </p>
                             <input type="hidden" name="_csrf" value="<%= csrfToken %>">

@@ -4,7 +4,7 @@ function onLoad(){
     var price = (document.getElementById('item-price').innerText).substring(3);
     var value = input.value;
     var total = Number(price) * Number(value);
-    document.getElementById('item-total').innerText = `GH ${total}`;
+    document.getElementById('item-total').innerText = `GH₵ ${total}`;
 }
 function increment() {
     var value = input.value;
@@ -23,7 +23,7 @@ function calculateTotal(val){
     var price = (document.getElementById('item-price').innerText).substring(3);
     var total = Number(price) * Number(val);
 
-    document.getElementById('item-total').innerText = `GH ${total}`;
+    document.getElementById('item-total').innerText = `GH₵ ${total}`;
 }
 
 const inputHandler = function(e){

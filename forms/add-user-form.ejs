@@ -1,0 +1,38 @@
+<form class="signup-form" action="/admin/user-update" method="POST">
+  <div class="form-control">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" readonly="true">
+  </div>
+  <div class="form-control">
+      <label for="email">E-Mail</label>
+      <input type="email" name="email" id="email" readonly="true">
+  </div>
+
+  <div class="form-control">
+      <label for="usertype">Usertype</label>
+     <select name="usertype" id="usertype" disabled="true">
+         <option value="admin">Admin</option>
+     </select>
+  </div>
+  <div class="form-control">
+      <label for="userid">UserID</label>
+      <input type="text" name="userid" id="userid" readonly="true">
+  </div>
+   <div class="form-control">
+      <label for="status">Status</label>
+      <select name="status" id="status">
+          <option value="approved">Approved</option>
+          <option value="suspended">Suspended</option>
+      </select>
+   </div>
+  <div class="form-control">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password">
+  </div>
+  <div class="form-control">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" name="confirmPassword" id="confirmPassword">
+  </div>
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <button class="btn" type="submit">Update</button>
+</form>

@@ -185,13 +185,13 @@ exports.postPayment = (req, res, next) => {
         user: {
           email: req.user.email,
           userId: req.user,
-          name: name,
-          contact: contact,
-          address: address,
-          country: country,
-          state: state,
-          city: city,
-          zip: zip
+          // name: name,
+          // contact: contact,
+          // address: address,
+          // country: country,
+          // state: state,
+          // city: city,
+          // zip: zip
         },
         products: products
       });

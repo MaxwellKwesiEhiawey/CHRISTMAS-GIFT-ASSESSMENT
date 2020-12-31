@@ -159,3 +159,59 @@ exports.getUserUpdate = (req, res, next) => {
     path: '/admin/users'
   });
 };
+
+
+exports.getAddUserUpdate = (req, res, next) => {
+  let message = req.flash('error');
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
+  res.render('admin/add-user', {
+    addusers: addusers,
+    pageTitle: 'Add User',
+    path: '/admin/add-user'
+  });
+};
+
+exports.addUsers = (req, res, next) => {
+  adduser.find()
+    .then(adduser => {
+      res.render('admin/add-user', {
+        addusers: adduser,
+        pageTitle: 'Add User',
+        path: '/admin/add-user'
+      });
+    })
+    .catch(err => console.log(err));
+};
+
+exports.postAddUserUpdate = (req, res, next) => {
+  const {email,status,password,confirmPassword} = req.body;
+  if(password === confirmPassword){
+    bcrypt.hash(password, 9)
+  .then(hashPassword=>{
+    console.log(hashPassword)
+    User.updateOne({ email: email }, {status:status, password:hashPassword}, function(err, docs){
+      if (err){ 
+        console.log(err) 
+        req.flash('error', 'An error occurred. Please try again.');
+        return res.redirect('/admin/add-user');
+    }
+     return res.redirect('/admin/add-user')
+    
+    } )
+  })
+    .catch(err => {
+      console.log('An error occurred. Please try again')
+      req.flash('error', 'An error occurred. Please try again');
+      return res.redirect('/admin/add-user');
+    });
+  }
+  else{
+    console.log('Password mismatch')
+    req.flash('error', 'Password mismatch');
+    return res.redirect('/admin/add-user');
+  }
+};

@@ -12,36 +12,36 @@ const paymentSchema = new Schema({
   user: {
     name: {
       type: String,
-      required: true
+      required: false
     },
-    contact: {
-      type: String,
-      required: true
-    },
-    address: {
-      type: String,
-      required: true
-    },
-    country: {
-      type: String,
-      required: true
-    },
-    state: {
-      type: String,
-      required: true
-    },
-    city: {
-      type: String,
-      required: true
-    },
-    zip: {
-      type: String,
-      required: true
-    },
-    email: {
-      type: String,
-      required: true
-    },
+    // contact: {
+    //   type: String,
+    //   required: true
+    // },
+    // address: {
+    //   type: String,
+    //   required: true
+    // },
+    // country: {
+    //   type: String,
+    //   required: true
+    // },
+    // state: {
+    //   type: String,
+    //   required: true
+    // },
+    // city: {
+    //   type: String,
+    //   required: true
+    // },
+    // zip: {
+    //   type: String,
+    //   required: true
+    // },
+    // email: {
+    //   type: String,
+    //   required: true
+    // },
     userId: {
       type: Schema.Types.ObjectId,
       required: true,
