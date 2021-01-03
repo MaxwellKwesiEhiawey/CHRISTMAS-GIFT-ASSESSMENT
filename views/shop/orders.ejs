@@ -18,9 +18,9 @@
                                     <th>Meal</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
-                                    <th>Ordered by</th>
                                     <th>Remove</th>
                                     <th>Total Price</th>
+                                    <th>Ordered by</th>
                                 </tr>
                         </table>
                         <table id="cart-item-body">
@@ -29,7 +29,6 @@
                                  
                                    <td> <h1><%= p.orderId %></h1></td>
                                    <td> <h1 id='item-price'>GH₵<%= p.price %></h1></td>
-                                   
                                     <td><button onclick="decrement()">-</button>
                                               <input id="demoInput" type="number" min="1" max="100" value='<%= p.quantity %>'>
                                               <button onclick="increment()">+</button>
@@ -40,7 +39,8 @@
                                         <button class="btn danger" type="submit">Delete</button>
                                     </form>
                                 </td>
-                                    
+                                <td><h1 id='item-total'></h1></td>
+                                <td></td>
                                 </tr>
                             <% }) %>
                     </table>
