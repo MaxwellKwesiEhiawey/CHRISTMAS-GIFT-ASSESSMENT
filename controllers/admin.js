@@ -104,6 +104,15 @@ exports.postDeleteProduct = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
+exports.postDeleteOrder = (req, res, next) => {
+  const ordersId = req.body.orderId;
+  Product.findByIdAndRemove(orderId)
+    .then(() => {
+      console.log('DESTROYED PRODUCT');
+      res.redirect('/admin/orders');
+    })
+    .catch(err => console.log(err));
+};
 exports.getUsers = (req, res, next) => {
   User.find()
     .then(users => {

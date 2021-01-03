@@ -1,0 +1,28 @@
+<form class="product-form" action="/admin/add-order" method="POST">
+    <div class="form-control">
+        <label for="title">Meal</label>
+        <input type="text" name="title" id="title">
+    </div>
+    <!-- <div class="form-control">
+        <label for="imageUrl">Image URL</label>
+        <input type="text" name="imageUrl" id="imageUrl">
+    </div> -->
+    <div class="form-control">
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" min="1">
+    </div>
+    <div class="form-control">
+        <label for="category">Quantity</label>
+        <select name="category" id="category">
+            <option value="">- None -</option>
+            <option value="all">All Menu</option>
+            <option value="today">Today's Menu</option>
+        </select>
+    </div>
+    <!-- <div class="form-control">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" rows="5"></textarea>
+    </div> -->
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <button class="btn" type="submit">Add Order</button>
+</form>

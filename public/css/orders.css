@@ -28,4 +28,9 @@
     color: #ee1325;
 }
 
+#order-item-body{
+  border-collapse: separate;
+  border-spacing: 0 5px;
+  
+  }
 

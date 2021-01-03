@@ -47,8 +47,23 @@ const userSchema = new Schema({
         quantity: { type: Number, required: true }
       }
     ]
+  },
+
+  order: {
+    items: [
+      {
+        productId: {
+          type: Schema.Types.ObjectId,
+          ref: 'Product',
+          required: true
+        },
+        quantity: { type: Number, required: true }
+      }
+    ]
   }
 });
+
+
 
 userSchema.methods.addToCart = function(product) {
   const cartProductIndex = this.cart.items.findIndex(cp => {
@@ -83,6 +98,19 @@ userSchema.methods.removeFromCart = function(productId) {
 
 userSchema.methods.clearCart = function() {
   this.cart = { items: [] };
+  return this.save();
+};
+
+userSchema.methods.removeFromOrder = function(productId) {
+  const updatedOrderItems = this.order.items.filter(item => {
+    return item.productId.toString() !== productId.toString();
+  });
+  this.order.items = updatedOrderItems;
+  return this.save();
+};
+
+userSchema.methods.clearOrder= function() {
+  this.order = { items: [] };
   return this.save();
 };
 

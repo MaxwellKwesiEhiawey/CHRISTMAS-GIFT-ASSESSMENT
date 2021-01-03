@@ -9,6 +9,7 @@ const orderSchema = new Schema({
       quantity: { type: Number, required: true }
     }
   ],
+  
   user: {
     email: {
       type: String,
@@ -23,3 +24,5 @@ const orderSchema = new Schema({
 });
 
 module.exports = mongoose.model('Order', orderSchema);
+
+

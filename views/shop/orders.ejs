@@ -21,26 +21,36 @@
                                     <th>Remove</th>
                                     <th>Total Price</th>
                                     <th>Ordered by</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
                                 </tr>
                         </table>
-                        <table id="cart-item-body">
-                            <% orders.forEach(p => { %> <% order.products.forEach(p => { %>
+                        <table id="order-item-body">
+                            <% orders.forEach(p => { %> 
                                 <tr>
-                                 
-                                   <td> <h1><%= p.orderId %></h1></td>
+                                    <td> <h1><%= order.productId %></h1></td>
                                    <td> <h1 id='item-price'>GH₵<%= p.price %></h1></td>
                                     <td><button onclick="decrement()">-</button>
                                               <input id="demoInput" type="number" min="1" max="100" value='<%= p.quantity %>'>
                                               <button onclick="increment()">+</button>
                                              </td>
-                                    <td><form action="/cart-delete-item" method="POST">
+                                    <td><form action="/order-delete-item" method="POST">
                                         <input type="hidden" value="<%= p.orderId%>" name="orderId">
                                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <button class="btn danger" type="submit">Delete</button>
                                     </form>
                                 </td>
-                                <td><h1 id='item-total'></h1></td>
+                                <td><h1 id='item-total'>GH₵</h1></td>
+                                <td><%= p.name %></td>
                                 <td></td>
+                                <td> <div class="form-control">
+                                    <label for="status">Status</label>
+                                    <select name="category" id="category">
+                                        <option value="pending">Pending</option>
+                                        <option value="all">Delivered</option>
+                                        <option value="cancelled">Cancelled</option>
+                                    </select>
+                                </div></td>
                                 </tr>
                             <% }) %>
                     </table>
@@ -52,7 +62,8 @@
                         </li>
                     <% }); %>
                 </ul>
-            <% }) %>
             <% } %>
+          
         </main>
         <%- include('../includes/footer.ejs') %>
+        <script src="/js/order.js"></script>
