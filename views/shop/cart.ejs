@@ -3,7 +3,7 @@
      <%- include('../includes/navigation.ejs') %>
     </head>
 
-    <body class="body-tag" onload="onLoad()">
+    <body class="body-tag">
        
         <main>
             <% if (products.length > 0) { %>
@@ -23,21 +23,30 @@
                 <table id="cart-item-body">
                         <% products.forEach(p => { %>
                             <tr>
-                               <td class="cart_item"><img src="<%= p.productId.imageUrl %>" alt=""></td> 
+                               <td><img src="<%= p.productId.imageUrl %>" alt=""></td> 
                                <td> <h1><%= p.productId.title %></h1></td>
                                <td> <h1 id='item-price'>GH₵<%= p.productId.price %></h1></td>
-                               <!-- <td> <h1><%= p.productId.price %></h1></td> -->
-                                <td><!--h2><%= p.quantity %></!--h2-->
-                                          <button onclick="decrement()">-</button>
-                                          <input id="demoInput" type="number" min="1" max="100" value='<%= p.quantity %>'>
-                                          <button onclick="increment()">+</button>
-                                         </td>
+                                <td>
+                                    <form action="/cart-reduce-quantity" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <button class="btn" type="submit">-</button>
+                                        <input type="hidden" name="productId" value="<%= p.productId._id %>">
+                                    </form>
+                                         
+                                          <input id="demoInput" type="number" min="1" max="100" value='<%= p.quantity %>' readonly>
+                                          
+                                    <form action="/cart" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <button class="btn" type="submit">+</button>
+                                        <input type="hidden" name="productId" value="<%= p.productId._id %>">
+                                    </form>
+                                </td>
                                 <td><form action="/cart-delete-item" method="POST">
                                     <input type="hidden" value="<%= p.productId._id %>" name="productId">
                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                     <button class="btn danger" type="submit">Delete</button>
                                 </form></td>
-                                <td><h1 id='item-total'></h1></td>
+                                <td><h1 >GH₵ <%- p.quantity * p.productId.price %></h1></td>
                             </tr>
                         <% }) %>
                 </table>

@@ -178,7 +178,7 @@ exports.getAddUserUpdate = (req, res, next) => {
     message = null;
   }
   res.render('admin/add-user', {
-    pageTitle: 'Add Admin',
+    pageTitle: 'Add User',
     path: '/admin/add-user'
   });
 };
@@ -220,3 +220,45 @@ exports.postAddUserUpdate = (req, res, next) => {
     return res.redirect('/admin/add-user');
   }
 };
+
+exports.getCreateCoupon = (req, res, next) => {
+  let message = req.flash('error');
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
+  res.render('admin/create-coupon', {
+    pageTitle: 'Add User',
+    path: '/admin/create-coupon'
+  });
+};
+
+// exports.postAddUserUpdate = (req, res, next) => {
+//   const {date,amount,couponId,confirmCouponId} = req.body;
+//   if(couponId === confirmCouponId){
+//     bcrypt.hash(couponId, 9)
+//   .then(CouponId=>{
+//     console.log(hashCouponId)
+//     User.updateOne({ date: date }, {couponId:couponId, password:hashPassword}, function(err, docs){
+//       if (err){ 
+//         console.log(err) 
+//         req.flash('error', 'An error occurred. Please try again.');
+//         return res.redirect('/admin/add-user');
+//     }
+//      return res.redirect('/admin/add-user')
+    
+//     } )
+//   })
+//     .catch(err => {
+//       console.log('An error occurred. Please try again')
+//       req.flash('error', 'An error occurred. Please try again');
+//       return res.redirect('/admin/add-user');
+//     });
+//   }
+//   else{
+//     console.log('Password mismatch')
+//     req.flash('error', 'Password mismatch');
+//     return res.redirect('/admin/add-user');
+//   }
+// };

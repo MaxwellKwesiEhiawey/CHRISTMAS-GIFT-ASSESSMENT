@@ -54,8 +54,9 @@ h3 {
 
 .blinking{
 	animation:blinkingText 1.30s infinite;
-  font-size: 25px;
+  font-size: 20px;
 padding-left: 200px;
+padding-top: 50px;
 text-align: center;
 color:  rgb(201, 9, 57) ;
 }
@@ -289,8 +290,9 @@ footer ul li{
 .grid {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-around; */
+  justify-content:center;
   align-items: stretch;
+  padding-top: 40px;
 }
 
 .card {

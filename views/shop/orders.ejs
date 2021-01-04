@@ -8,7 +8,7 @@
         <main>
             <% if (orders.length <= 0) { %>
                 <h1>Nothing there!</h1>
-            <% } else { console.log('orders: ', csrfToken) %>
+            <% } else { %>
                 <ul class="orders">
                     <% orders.forEach(order => { %>
                         <li class="orders__item">
@@ -16,19 +16,17 @@
                             <table id="cart-item-head">
                                 <tr>
                                     <th>Meal</th>
-                                    <th>Price</th>
                                     <th>Quantity</th>
-                                    <th>Total Price</th>
+                                    <th>Price</th>
                                     <th>Ordered by</th>
                                     <th>Date</th>
                                     <th>Status</th>
-                                    <th>Edit</th>
-                                    <th>Remove</th>
                                 </tr>
                         </table>
                         <table id="order-item-body">
                             <% orders.forEach(p => { %> 
                                 <tr>
+                                    <td><h1></h1></td>
                                     <td> <h1><%= order.productId %></h1></td>
                                    <td> <h1 id='item-price'>GH₵<%= p.price %></h1></td>
                                     <td><button onclick="decrement()">-</button>

@@ -87,6 +87,18 @@ exports.postCart = (req, res, next) => {
     });
 };
 
+exports.postReduceCartQuantity = (req, res, next) => {
+  const prodId = req.body.productId;
+  Product.findById(prodId)
+    .then(product => {
+      return req.user.reduceCartQuantity(product);
+    })
+    .then(result => {
+      console.log(result);
+      res.redirect('/cart');
+    });
+};
+
 exports.postCartDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
   req.user
@@ -170,17 +182,19 @@ exports.postCheckout = (req, res, next) => {
 };
 
 exports.getCheckout = (req, res, next) => {
-  Checkout.find({ 'user.userId': req.user._id })
-    .then(orders => {
-      console.log(orders)
-      res.render('shop/checkout', {
-        path: '/checkout',
-        pageTitle: 'Checkout',
-        orders: orders
-      });
-    })
-    .catch(err => console.log(err));
-};
+  req.user
+     .populate('cart.items.productId')
+     .execPopulate()
+     .then(user => {
+       const products = user.cart.items;
+       res.render('shop/checkout', {
+         path: '/checkout',
+         pageTitle: 'Checkout',
+         products: products
+       });
+     })
+     .catch(err => console.log(err));
+ };
 
 exports.postPayment = (req, res, next) => {
   const {name, contact, address, country, state,city, zip, total} = req.body;

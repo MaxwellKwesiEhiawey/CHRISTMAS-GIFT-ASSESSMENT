@@ -9,7 +9,7 @@
        
         <main>
             <div class="checkout-container">
-                <% if (orders.length <= 0) { %>
+                <% if (products.length <= 0) { %>
                     <h1>Nothing to checkout</h1>
                 <% } else { %>
                     <!-- <h1 class='checkout-title'>Summary</h1> -->
@@ -56,10 +56,8 @@
                         <div class="checkout-summary">
                             <h1 class="checkout-summary-title">Order Summary</h1>
                             <% var total = 0; %>
-                            <% orders.forEach(order => { %>
-                                <% order.products.forEach(p => { %>
-                                    <%   total += (p.quantity * p.product.price) %>
-                                <% }); %>
+                            <% products.forEach( p => { %>
+                                <%   total += p.quantity * p.productId.price %>
                             <% }); %>
                             <p class="checkout-summary-item">Menu Total: GH₵ <%= total %></p>
                             <p>Grand Total: GH₵
