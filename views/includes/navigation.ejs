@@ -25,7 +25,7 @@
                     <!-- <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin
                     </a> -->
                     <div class="dropdown-content">
-                        <a class="<%= path === '/admin/add-user' ? 'active' : '' %>" href="/admin/add-user">Add User</a>
+                        <a class="<%= path === '/admin/add-user' ? 'active' : '' %>" href="/admin/add-user">Add Admin</a>
                         <a class="<%= path === '/admin/users' ? 'active' : '' %>" href="/admin/users">Users Management</a>
                         <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Menu Management</a>
                     </div>
@@ -47,6 +47,7 @@
         
             <% if (isAuthenticated && ((user === undefined) ? false : user.usertype == 'staff') || 
                     isAuthenticated && ((user === undefined) ? false : user.usertype == 'trainee')) { %>
+                        
                 <li class="main-header__item">
                     <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
                 </li>
@@ -96,7 +97,7 @@
                 <!-- <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin
                 </a> -->
                 <div class="dropdown-content">
-                    <a class="<%= path === '/admin/users' ? 'active' : '' %>" href="/admin/add-user">Add User</a>
+                    <a class="<%= path === '/admin/add-users' ? 'active' : '' %>" href="/admin/add-admin">Add User</a>
                     <a class="<%= path === '/admin/users' ? 'active' : '' %>" href="/admin/users">Users Management</a>
                     <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Menu Management</a>
                 </div>

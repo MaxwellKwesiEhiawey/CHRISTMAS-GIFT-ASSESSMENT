@@ -31,6 +31,9 @@
 #order-item-body{
   border-collapse: separate;
   border-spacing: 0 5px;
-  
+padding-left: 6px;
+  }
+  .status{
+    padding-left: 60px;
   }
 

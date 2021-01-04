@@ -15,14 +15,14 @@
                         <h1>Nothing here!</h1>
                     <% } else { console.log('payment: ', csrfToken)%>
                     <div class="col-xs-12 col-md-4">
-                        <!-- CREDIT CARD FORM STARTS HERE -->
+                        
                         <div class="panel panel-default credit-card-box">
                             <div class="panel-heading display-table" >
                                 <div class="row display-tr" >
                                 <h3 class="panel-title display-td" >Payment Details</h3>
                                 </div>  
                                 <div class="row display-tr" >
-                                        <div class="display-td" >                            
+                                        <div class="display-td"></div>                         
                                             <img class="img-responsive pull-right card" id="visa" src="images/mtn.png">
                                             <img class="img-responsive pull-right card" id="mscard" src="images/Vodafone-Cash.png">
                                             <img class="img-responsive pull-right momo" id="mtn" src="images/tigo.jpeg">
@@ -32,37 +32,7 @@
                             </div>
                             <div class="panel-body" id="panel-body-card">
                                 <form role="form" id="payment-form" action="/create-order" method="POST">
-                                    <!-- <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="form-control">
-                                                <label for="cardNumber">CARD NUMBER</label>
-                                                <div class="input-group">
-                                                    <input 
-                                                    type="tel"
-                                                    class="form-control"
-                                                    name="cardNumber"
-                                                    autocomplete="cc-number"
-                                                    required autofocus 
-                                                    />
-                                                    <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                                                </div>
-                                            </div>                            
-                                        </div>
-                                    </div> -->
-                                <!-- <div class="row">
-                                    <div class="col-xs-7 col-md-7">
-                                        <div class="form-control">
-                                        <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
-                                        <input 
-                                        type="tel" 
-                                        class="form-control" 
-                                        name="cardExpiry"
-                                        autocomplete="cc-exp"
-                                        required 
-                                        />
-                                        </div>
-                                    </div>
-                                <div class="col-xs-5 col-md-5 pull-right"> -->
+                                    
                                     <div class="form-control">
                                         <label for="cardCVC">Enter MoMo Number</label>
                                         <input 

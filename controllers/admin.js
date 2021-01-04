@@ -178,22 +178,18 @@ exports.getAddUserUpdate = (req, res, next) => {
     message = null;
   }
   res.render('admin/add-user', {
-    addusers: addusers,
-    pageTitle: 'Add User',
+    pageTitle: 'Add Admin',
     path: '/admin/add-user'
   });
 };
 
 exports.addUsers = (req, res, next) => {
-  adduser.find()
-    .then(adduser => {
       res.render('admin/add-user', {
-        addusers: adduser,
         pageTitle: 'Add User',
         path: '/admin/add-user'
       });
-    })
-    .catch(err => console.log(err));
+   
+   
 };
 
 exports.postAddUserUpdate = (req, res, next) => {

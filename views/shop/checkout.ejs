@@ -1,6 +1,7 @@
 <%- include('../includes/head.ejs') %>
         <link rel="stylesheet" href="/css/forms.css">
         <link rel="stylesheet" href="/css/checkout.css">
+        
     </head>
 
     <body>
@@ -10,53 +11,48 @@
             <div class="checkout-container">
                 <% if (orders.length <= 0) { %>
                     <h1>Nothing to checkout</h1>
-                <% } else {console.log('checkout: ', csrfToken) %>
+                <% } else { %>
                     <!-- <h1 class='checkout-title'>Summary</h1> -->
-                    <form action="/payment" method="POST">
-                        <!-- <div class="checkout-billing"> -->
-                            <!-- <div class="form-control">
-                                <label for="name">Full Name</label>
-                                <input type="text" name="name" id="name" required>
-                            </div> -->
-                            <!-- <div class="form-control">
-                                <label for="contact">Phone Number</label>
-                                <input type="tel" name="contact" id="contact" required>
+                    <form action="/create-order" method="POST">
+                        <div class="checkout-billing">   
+                            <div class="col-xs-12 col-md-4">
+                                <div class="panel panel-default credit-card-box">
+                                    <div class="panel-heading display-table" >
+                                        <div class="row display-tr" >
+                                        <h3 class="panel-title display-td" >Payment Options</h3>
+                                        </div>  
+                                        <div class="row display-tr" >
+                                                <div class="display-td"></div>                         
+                                                    <img class="img-responsive pull-right card" id="visa" src="images/mtn.png">
+                                                    <img class="img-responsive pull-right card" id="mscard" src="images/Vodafone-Cash.png">
+                                                    <img class="img-responsive pull-right momo" id="mtn" src="images/tigo.jpeg">
+                                                    <img class="img-responsive pull-right momo" id="tigo" src="images/gmoney.png">
+                                        </div>
+                                            </div>               
+                                    </div>
                             </div>
                             <div class="form-control">
-                                <label for="address">Address Line 1</label>
-                                <input type="text" name="address" id="address" required>
-                            </div> -->
-                        
+                                <div class="form-control">
+                                    <label for="status">Select Payment Option</label>
+                                    <select class="select-area" name="status" id="status">
+                                        <option value="approved">MoMo Number</option>
+                                        <option value="suspended">Enter Coupon</option>
+                                    </select>
+                                 </div>
+                                <label for="cardCVC">Enter Number</label>
+                                <input class="select-area"
+                                type="tel" 
+                                class="form-control"
+                                name="cardCVC"
+                                autocomplete="cc-csc"
+                                required
+                                />
+                            </div>
                             <!-- <div class="form-control">
-                                <label for="country">Country</label>
-                            <select name="country" id="country"  required>
-                                <option value="">-None-</option>
-                                <option value="ghana">Ghana</option>
-                                <option value="nigeria">Nigeria</option>
-                            </select>
+                                    <label for="couponCode">Enter Coupon Code</label>
+                                    <input type="text" class="form-control" name="couponCode" />
                             </div> -->
-                            <!-- <div class="form-control">
-                                <label for="state">State</label>
-                            <select name="state" id="state" required>
-                                <option value="">-None-</option>
-                                <option value="accra">Accra</option>
-                                <option value="takoradi">Takoradi</option>
-                                <option value="nigeria">Nigeria</option>
-                            </select>
-                            </div> -->
-                            <!-- <div class="form-control">
-                                <label for="city">City</label>
-                            <select name="city" id="city" required >
-                                <option value="">-None-</option>
-                                <option value="james_town">James Town</option>
-                                <option value="nigeria">Nigeria</option>
-                            </select>
-                            </div> -->
-                            <!-- <div class="form-control">
-                                <label for="zip">Zip Code</label>
-                                <input type="text" name="zip" id="zip"  required>
-                            </div> -->
-                        <!-- </div> -->
+                        </div>
                         <div class="checkout-summary">
                             <h1 class="checkout-summary-title">Order Summary</h1>
                             <% var total = 0; %>
@@ -65,12 +61,12 @@
                                     <%   total += (p.quantity * p.product.price) %>
                                 <% }); %>
                             <% }); %>
-                            <p class="checkout-summary-item">Menu Total: GH <%= total %></p>
+                            <p class="checkout-summary-item">Menu Total: GH₵ <%= total %></p>
                             <p>Grand Total: GH₵
                                 <input class="checkout-summary-input-item" type="number" id="total" name='total' value='<%= total %>' readonly="true">
                             </p>
                             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                            <button class="btn checkout-summary-btn" type="submit">Proceed to Payment</button>
+                            <button class="btn checkout-summary-btn" type="submit">Checkout</button>
                         </div>
                     </form>
                 <% } %>

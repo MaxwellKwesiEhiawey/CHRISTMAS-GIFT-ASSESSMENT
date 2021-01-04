@@ -5,16 +5,19 @@
 .checkout-summary-title{
     margin-top: 0px;
     border-bottom: 1px solid  rgb(195, 189, 189);
+    font-size: 20px;
 }
 
-.checkout-container{
+.checkout-container {
     margin: auto;
     width: 80%;
 }
 
+
+
 .checkout-billing{
     float:left;
-    width:60%;
+    width:35%;
     overflow:hidden;
 }
 
@@ -32,4 +35,44 @@
     background: transparent;
    border: none;
    font-size: 16px;
+}
+
+.credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.credit-card-box label {
+    display: block;
+}
+/* The old "center div vertically" hack */
+.credit-card-box .display-table {
+    display: table;
+}
+.credit-card-box .display-tr {
+    display: table-row;
+    align-items: center;
+}
+.credit-card-box .display-td {
+    /* display: table-cell; */
+    vertical-align: middle;
+    width: 50%;
+    margin: 0 auto;
+    padding-left: 5px;
+}
+
+/* Just looks nicer */
+.credit-card-box .panel-heading img {
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+}
+.select-area{
+    background-color: rgb(247, 226, 205);
+    color: rgb(180, 69, 69);
+}
+.panel-heading img{
+    /* padding-top: 10px;
+    padding-left: 15px; */
 }
