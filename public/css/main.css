@@ -10,12 +10,69 @@
   height: 150px;
   width: 100%;
   padding: 5px 20px;
-  color: rgb(201, 9, 57);
+  color: rgb(247, 8, 68);
 font-size: 22px;
 background-size:350;
 }
+.home__image  {
+  margin: 0;
+  padding: 10px 100px;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: rgb(238, 13, 13);
+}
+h3 {
+  position: relative;
+  font-family: sans-serif;
+  text-transform:capitalize;
+  font-size: 2em;
+  font-style: italic;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgb(233, 31, 31), rgb(243, 189, 10), rgb(253, 62, 62));
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 10s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(197, 48, 73, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+
+
 .tag-header{
   padding: 0 80px;
+}
+
+.blinking{
+	animation:blinkingText 1.30s infinite;
+  font-size: 25px;
+padding-left: 200px;
+text-align: center;
+color:  rgb(201, 9, 57) ;
+}
+@keyframes blinkingText{
+	25%{		color: rgb(247, 143, 73);	}
+	49%{	color: transparent;	}
+	50%{	color: transparent;	}
+	99%{	color:transparent;	}
+	100%{	color: rgb(233, 7, 7);	}
+  
+}
+#blink-flash{
+  text-align: center;
+  align-content: center;
+padding-top: 200px;
+
+
 }
 
 body {
