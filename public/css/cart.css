@@ -35,17 +35,24 @@ th {
   padding-top: 12px;
   padding-left: 12px;
   padding-bottom: 12px;
-  text-align: left;
+  text-align: center;
   background-color: #690009;
   color: #fff;
 }
 
-th, td{
-  width: 200px;
-  border: 1px solid #ddd;
-  padding: 5px;
+th {
+  padding-left: 60px;
 }
 
+th, td{
+  width: 350px;
+  border: 0.1px solid #ddd;
+  padding: 1px;
+ 
+}
+.image-tag{
+  padding-right: 10px;
+}
 .cart-item{
   border-right: hidden;
 }
@@ -55,9 +62,11 @@ border-collapse: separate;
 border-spacing: 0 5px;
 }
  
-table tr td img{
-  height: 80px;
-  width: 80px;
+table tr td img {
+  height: 60px;
+  width: 60px;
+
+
 }
 
 .cart_item h1,
@@ -72,4 +81,8 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+.table-data{
+  color: red;
+  font-size: 10px;
+  text-align: center;
+}

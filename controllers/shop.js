@@ -147,6 +147,18 @@ exports.getOrders = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
+exports.getAllOrders = (req, res, next) => {
+  Order.find()
+    .then(orders => {
+      res.render('shop/orders', {
+        path: '/orders',
+        pageTitle: 'Your Orders',
+        orders: orders
+      });
+    })
+    .catch(err => console.log(err));
+};
+
 exports.postOrderDeleteProduct = (req, res, next) => {
   const ordersId = req.body.orderId;
   req.user

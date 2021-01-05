@@ -21,9 +21,9 @@
                 </table>
                 <table id="cart-item-body">
                         <% products.forEach(p => { %>
-                            <tr>
-                               <td><img src="<%= p.productId.imageUrl %>" alt=""></td> 
-                               <td> <h1><%= p.productId.title %></h1></td>
+                            <tr class="table-data">
+                               <td class="image-tag"><img src="<%= p.productId.imageUrl %>" alt=""></td> 
+                               <td> <h1 ><%= p.productId.title %></h1></td>
                                <td> <h1 id='item-price'>GH₵<%= p.productId.price %></h1></td>
                                 <td>
                                     <form action="/cart-reduce-quantity" method="post">
@@ -61,7 +61,7 @@
             <% } else { %>
                 <h1>No Meal in Cart!</h1>
                 <div class="card__actions">
-                    <a href="/products" class="btn">Go Pick Meal</a>
+                    <a href="/products" class="btn">Please Go Pick Meal!</a>
                 </div>
             <% } %>
         </main>
