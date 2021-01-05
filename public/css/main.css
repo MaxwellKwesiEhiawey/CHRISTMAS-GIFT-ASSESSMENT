@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
-
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
+
 
 .home__image{
   background-image:url("../images/dinner_item.jpg");
@@ -56,7 +56,7 @@ h3 {
 	animation:blinkingText 1.30s infinite;
   font-size: 20px;
 padding-left: 200px;
-padding-top: 50px;
+padding-top: 30px;
 text-align: center;
 color:  rgb(201, 9, 57) ;
 }
@@ -132,12 +132,12 @@ form {
   background-color: #690009;
   color: #ffa33b;
   padding: 0 2rem;
-  height: 3.5rem;
+  height: 2.2rem;
   text-align: center;
 }
 footer ul{
   list-style: none;
-  padding: 2px;
+  padding: 1px;
 }
 footer ul li{
   display: inline-block;
@@ -288,15 +288,15 @@ footer ul li{
 }
 
 .grid {
-  display: flex;
+  display:flex;
   flex-wrap: wrap;
-  justify-content:center;
-  align-items: stretch;
-  padding-top: 40px;
+  justify-content:left;
+  align-items:flex-start;
+  padding-top: 15px;
 }
 
 .card {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.26);
 }
 
 .card__header,
@@ -317,11 +317,11 @@ footer ul li{
 }
 
 .card__image img {
-  width: 100%;
+  width: 90%;
 }
 
 .card__actions {
-  padding: 1rem;
+  padding: 0rem;
   text-align: center;
 }
 
