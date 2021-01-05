@@ -24,42 +24,28 @@
                                 </tr>
                         </table>
                         <table id="order-item-body">
-                            <% orders.forEach(p => { %> 
+                            <% order.products.forEach(p => { %> 
+                                <%- console.log(p) %>
                                 <tr>
-                                    <td><h1></h1></td>
-                                    <td> <h1><%= order.productId %></h1></td>
-                                   <td> <h1 id='item-price'>GH₵<%= p.price %></h1></td>
-                                    <td><button onclick="decrement()">-</button>
-                                              <input id="demoInput" type="number" min="1" max="100" value='<%= p.quantity %>'>
-                                              <button onclick="increment()">+</button>
-                                             </td>
-                                <td><h1 id='item-total'>GH₵</h1></td>
-                                <td><%= p.name %></td>
-                                <td></td>
-                                <td class="status"> <div class="form-control">
-                                    <label for="status"></label>
-                                    <select name="category" id="category">
-                                        <option value="pending">Pending</option>
-                                        <option value="all">Delivered</option>
-                                        <option value="cancelled">Cancelled</option>
-                                    </select>
-                                </div></td>
-                                <td></td>
-                                <td><form action="/order-delete-item" method="POST">
-                                    <input type="hidden" value="<%= p.orderId%>" name="orderId">
-                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                    <button class="btn danger" type="submit">Delete</button>
-                                </form>
-                            </td>
+                                    <td><h1><%= p.product.title %></h1></td>
+                                    <td><h1><%= p.quantity %></h1></td>
+                                    <td> <h1 id='item-total'>GH₵ <%= p.product.price * p.quantity %></h1></td>
+                                    <td><h1><%= order.user.email %></h1></td>
+                                    <td><h1>2020-12-13 12:00</h1></td>
+                                <td class="status"> 
+                                    <div class="form-control">
+                                        <label for="status"></label>
+                                        <select name="category" id="category">
+                                            <option value="pending">Pending</option>
+                                            <option value="all">Delivered</option>
+                                            <option value="cancelled">Cancelled</option>
+                                        </select>
+                                    </div>
+                                </td>
                                 </tr>
                             <% }) %>
                     </table>
-                            <!-- <ul class="orders__products">
-                                <% order.products.forEach(p => { %>
-                                    <li class="orders__products-item"><%= p.product.title %> (<%= p.quantity %>)</li>
-                                <% }); %>
-                            </ul> -->
-                        </li>
+                </li>
                     <% }); %>
                 </ul>
             <% } %>

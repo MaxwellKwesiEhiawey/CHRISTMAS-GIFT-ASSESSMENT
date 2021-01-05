@@ -1,0 +1,58 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">   
+    <link rel="stylesheet" href="/css/users.css">
+     <%- include('../includes/navigation.ejs') %>
+    </head>
+
+    <body class="body-tag">
+       
+        <main>
+            <% if (coupons.length > 0) { %>
+                <div id="user-item-container">
+                <h1 data-v-5a78baf3="" class="text-center cart-text m-auto">Coupons</h1>
+                <table id="coupon-item-head">
+                    <tr>
+                        <th>Name</th>
+                        <th>Valid From</th>
+                        <th>Valid To</th>
+                        <th>Percentage</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+            </table>
+            <table id="user-item-body">
+                    <% coupons.forEach(c => { %>
+                        <tr>
+                            <td><%= c.name %></td>
+                            <td><%= c.vfrom %></td>
+                            <td><%= c.vto %></td>
+                            <td><%= c.percent %></td>
+                            <td><%= c.status %></td>
+                            <td><%= c.date %></td>
+                        </tr>
+                    <% }) %>
+            </table>
+            </div>
+            <% } else { %>
+                <h1>No Coupons!</h1>
+            <% } %>
+
+            <button id="kc_fab_main_btn">+</button>
+
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Generate Coupon</h2>
+                    </div>
+                    <div class="modal-body">
+                        <%- include('../../forms/coupon-form.ejs') %>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <%- include('../includes/footer.ejs') %>
+        <script src="/js/coupon.js"></script>
+</body>
+</html>

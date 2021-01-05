@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const Product = require('../models/product');
 const User = require('../models/user');
+const Coupon = require('../models/coupon');
 
 exports.getAddProduct = (req, res, next) => {
   res.render('admin/edit-product', {
@@ -125,13 +126,11 @@ exports.getUsers = (req, res, next) => {
     .catch(err => console.log(err));
 };
 
-
 exports.postUserUpdate = (req, res, next) => {
   const {email,status,password,confirmPassword} = req.body;
   if(password === confirmPassword){
     bcrypt.hash(password, 9)
   .then(hashPassword=>{
-    console.log(hashPassword)
     User.updateOne({ email: email }, {status:status, password:hashPassword}, function(err, docs){
       if (err){ 
         console.log(err) 
@@ -169,96 +168,102 @@ exports.getUserUpdate = (req, res, next) => {
   });
 };
 
-
-exports.getAddUserUpdate = (req, res, next) => {
-  let message = req.flash('error');
-  if (message.length > 0) {
-    message = message[0];
-  } else {
-    message = null;
-  }
-  res.render('admin/add-user', {
-    pageTitle: 'Add User',
-    path: '/admin/add-user'
-  });
-};
-
-exports.addUsers = (req, res, next) => {
-      res.render('admin/add-user', {
-        pageTitle: 'Add User',
-        path: '/admin/add-user'
-      });
-   
-   
-};
-
-exports.postAddUserUpdate = (req, res, next) => {
-  const {email,status,password,confirmPassword} = req.body;
+exports.postAddUser = (req, res, next) => {
+  const {name,email,usertype,userid,department,status,password,confirmPassword} = req.body;
   if(password === confirmPassword){
     bcrypt.hash(password, 9)
   .then(hashPassword=>{
-    console.log(hashPassword)
-    User.updateOne({ email: email }, {status:status, password:hashPassword}, function(err, docs){
-      if (err){ 
-        console.log(err) 
-        req.flash('error', 'An error occurred. Please try again.');
-        return res.redirect('/admin/add-user');
-    }
-     return res.redirect('/admin/add-user')
-    
-    } )
+    const user = new User({
+      name: name,
+      email: email,
+      usertype: usertype,
+      userid: userid,
+      department:department,
+      password:hashPassword,
+      status:status,
+      cart: { items: [] }
+    });
+    user.save()
+  .then(result => {
+    res.redirect('/admin/users');
+  });
   })
     .catch(err => {
       console.log('An error occurred. Please try again')
       req.flash('error', 'An error occurred. Please try again');
-      return res.redirect('/admin/add-user');
+      return res.redirect('/admin/users');
     });
   }
   else{
     console.log('Password mismatch')
     req.flash('error', 'Password mismatch');
-    return res.redirect('/admin/add-user');
+    return res.redirect('/admin/users');
   }
 };
 
-exports.getCreateCoupon = (req, res, next) => {
-  let message = req.flash('error');
-  if (message.length > 0) {
-    message = message[0];
-  } else {
-    message = null;
-  }
-  res.render('admin/create-coupon', {
-    pageTitle: 'Add User',
-    path: '/admin/create-coupon'
-  });
-};
+exports.postCoupon = (req, res, next) => {
+  const {vfrom,vto,percent,numgen} = req.body;
+  try{
+  var date = formatDate();
+    for(var i=1; i<= Number(numgen); i++){ 
+    var random = randomString(10);
+    const coupon = new Coupon({
+      name:random,
+        vfrom: vfrom,
+        vto: vto,
+        percent: percent,
+        status:'unused',
+        date:date
+      });
+      coupon.save()
+    }
 
-// exports.postAddUserUpdate = (req, res, next) => {
-//   const {date,amount,couponId,confirmCouponId} = req.body;
-//   if(couponId === confirmCouponId){
-//     bcrypt.hash(couponId, 9)
-//   .then(CouponId=>{
-//     console.log(hashCouponId)
-//     User.updateOne({ date: date }, {couponId:couponId, password:hashPassword}, function(err, docs){
-//       if (err){ 
-//         console.log(err) 
-//         req.flash('error', 'An error occurred. Please try again.');
-//         return res.redirect('/admin/add-user');
-//     }
-//      return res.redirect('/admin/add-user')
+    return res.redirect('/admin/coupons');
+    }catch(err){
+      req.flash('error', 'An error occurred.');
+    return res.redirect('/admin/coupons');
+    }
     
-//     } )
-//   })
-//     .catch(err => {
-//       console.log('An error occurred. Please try again')
-//       req.flash('error', 'An error occurred. Please try again');
-//       return res.redirect('/admin/add-user');
-//     });
-//   }
-//   else{
-//     console.log('Password mismatch')
-//     req.flash('error', 'Password mismatch');
-//     return res.redirect('/admin/add-user');
-//   }
-// };
+};
+
+exports.getCoupons = (req, res, next) => {
+  Coupon.find()
+    .then(coupons => {
+      res.render('admin/coupons', {
+        coupons: coupons,
+        pageTitle: 'Coupons',
+        path: '/admin/coupons'
+      });
+    })
+    .catch(err => console.log(err));
+};
+
+function randomString(length) {
+			
+  var text = "";
+
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  
+  for(var i = 0; i < length; i++) {
+  
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+  }
+  
+  return text;
+}
+
+function formatDate() {
+  var d = new Date(),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [year, month, day].join('-');
+}
+

@@ -56,7 +56,7 @@ h3 {
 	animation:blinkingText 1.30s infinite;
   font-size: 20px;
 padding-left: 200px;
-padding-top: 50px;
+padding-top: 30px;
 text-align: center;
 color:  rgb(201, 9, 57) ;
 }
@@ -71,9 +71,7 @@ color:  rgb(201, 9, 57) ;
 #blink-flash{
   text-align: center;
   align-content: center;
-padding-top: 200px;
-
-
+/* padding-top: 200px; */
 }
 
 body {
@@ -86,6 +84,7 @@ body {
 }
 .logo-img{
   padding: 3rem;
+  margin: 30px;
 }
 .text-center{
   text-align: center;
@@ -117,9 +116,9 @@ form {
 
 .main-header {
   width: 100%;
-  height: 3.5rem;
+  height: 3.0rem;
   background-color: #690009;
-  padding: 0 1.5rem;
+  padding: 0.2rem 0.9rem;
   display: flex;
   align-items: center;
 }
@@ -132,7 +131,7 @@ form {
   background-color: #690009;
   color: #ffa33b;
   padding: 0 2rem;
-  height: 3.5rem;
+  height: 2.2rem;
   text-align: center;
 }
 footer ul{
@@ -373,6 +372,27 @@ footer ul li{
   border-color: red;
   background: rgb(255, 176, 176);
   color: red;
+}
+
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: 1px;
 }
 
 @media (min-width: 768px) {

@@ -1,0 +1,21 @@
+<form class="signup-form" action="/admin/coupon" method="POST">
+    <div class="form-control">
+        <label for="vfrom">Valid From</label>
+        <input type="date" name="vfrom" id="vfrom">
+    </div>
+    <div class="form-control">
+        <label for="vto">Valid To</label>
+        <input type="date" name="vto" id="vto">
+    </div>
+    <div class="form-control">
+        <label for="percent">Percentage</label>
+        <input type="number" name="percent" id="percent">
+    </div>
+
+    <div class="form-control">
+        <label for="numgen">Number To Generate</label>
+        <input type="number" name="numgen" id="numgen">
+    </div>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <button class="btn" type="submit">Generate</button>
+</form>

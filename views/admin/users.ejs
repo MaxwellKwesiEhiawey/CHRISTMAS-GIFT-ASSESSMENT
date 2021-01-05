@@ -32,10 +32,36 @@
                             </tr>
                         <% }) %>
                 </table>
+
+
+                <h1 data-v-5a78baf3="" class="text-center cart-text m-auto">Coupons</h1>
+                <button>Generate coupons</button>
+                <table id="coupon-item-head">
+                    <tr>
+                        <th>Name</th>
+                        <th>Validity Period</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+            </table>
+            <table id="user-item-body">
+                    <% users.forEach(p => { %>
+                        <tr>
+                            <td><%= p.name %></td>
+                            <td><%= p.email %></td>
+                            <td><%= p.usertype %></td>
+                            <td><%= p.userid %></td>
+                            <td><%= p.department %></td>
+                            <td><%= p.status %></td>
+                        </tr>
+                    <% }) %>
+            </table>
             </div>
             <% } else { %>
                 <h1>No Users!</h1>
             <% } %>
+
+            <button id="kc_fab_main_btn">+</button>
 
             <div id="myModal" class="modal">
                 <div class="modal-content">
@@ -45,6 +71,18 @@
                     </div>
                     <div class="modal-body">
                         <%- include('../../forms/user-update-form.ejs') %>
+                    </div>
+                </div>
+            </div>
+
+            <div id="adduserModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close closeUser">&times;</span>
+                        <h2>Add User</h2>
+                    </div>
+                    <div class="modal-body">
+                        <%- include('../../forms/admin-add-user-form.ejs') %>
                     </div>
                 </div>
             </div>

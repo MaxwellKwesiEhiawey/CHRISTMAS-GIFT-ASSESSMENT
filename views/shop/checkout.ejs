@@ -31,37 +31,38 @@
                                             </div>               
                                     </div>
                             </div>
-                            <div class="form-control">
+                            
                                 <div class="form-control">
                                     <label for="status">Select Payment Option</label>
                                     <select class="select-area" name="status" id="status">
-                                        <option value="approved">MoMo Number</option>
-                                        <option value="suspended">Enter Coupon</option>
+                                        <option value="momo">MoMo Number</option>
+                                        <option value="coupon">Enter Coupon</option>
                                     </select>
                                  </div>
+                                 <div class="form-control">
                                 <label for="cardCVC">Enter Number</label>
-                                <input class="select-area"
-                                type="tel" 
+                                <input
+                                type="text" 
                                 class="form-control"
                                 name="cardCVC"
-                                autocomplete="cc-csc"
+                                id="cardCVC"
                                 required
                                 />
                             </div>
-                            <!-- <div class="form-control">
-                                    <label for="couponCode">Enter Coupon Code</label>
-                                    <input type="text" class="form-control" name="couponCode" />
-                            </div> -->
+
+                            <div>
+                                <button type="button" id="apply-coupon">Apply Coupon</button>
+                            </div>
                         </div>
                         <div class="checkout-summary">
                             <h1 class="checkout-summary-title">Order Summary</h1>
                             <% var total = 0; %>
                             <% products.forEach( p => { %>
+                                <p class="checkout-summary-item"><%= p.productId.title %>: GH₵ <%= p.quantity * p.productId.price %></p>
                                 <%   total += p.quantity * p.productId.price %>
                             <% }); %>
-                            <p class="checkout-summary-item">Menu Total: GH₵ <%= total %></p>
-                            <p>Grand Total: GH₵
-                                <input class="checkout-summary-input-item" type="number" id="total" name='total' value='<%= total %>' readonly="true">
+                            
+                            <p>Grand Total: GH₵  <input class="checkout-summary-input-item" type="number" id="total" name='total' value='<%= total %>' readonly="true">
                             </p>
                             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                             <button class="btn checkout-summary-btn" type="submit">Checkout</button>
@@ -73,6 +74,6 @@
         </main>
         
         <%- include('../includes/footer.ejs') %>
-        <!-- <script src="/js/checkout.js"></script> -->
+        <script type="module" src="/js/checkout.js"></script>
     </body>
 </html>

@@ -86,7 +86,7 @@ exports.postSignup = (req, res, next) => {
           usertype: usertype,
           userid: userid,
           department:department,
-          password:'na',
+          password:"",
           status:'pending',
           cart: { items: [] }
         });

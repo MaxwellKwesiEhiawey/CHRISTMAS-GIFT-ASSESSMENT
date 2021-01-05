@@ -11,8 +11,14 @@ var table = document.getElementById('user-item-body'),
 // Get the modal
 var modal = document.getElementById("myModal");
 
+var addusermodal = document.getElementById("adduserModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("kc_fab_main_btn");
+
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+var spanUser = document.getElementsByClassName("closeUser")[0];
 
 
 for ( var i in inputHash )
@@ -45,12 +51,23 @@ table.addEventListener( 'click', function( evt ) {
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
+  modal.style.display == "none"
+}
+
+spanUser.onclick = function() {
+  addusermodal.style.display == "none"
+}
+
+btn.onclick = function() {
+    addusermodal.style.display = "block";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+  }
+  if (event.target == addusermodal) {
+    addusermodal.style.display = "none";
   }
 }
