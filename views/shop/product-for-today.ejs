@@ -6,6 +6,12 @@
         <%- include('../includes/navigation.ejs') %>
 
             <main>
+                <h3 class="home__image" > Welcome!<ul class="tag-header">     Please Pick a Meal for Today!!!</ul>
+                </h3> 
+                <% if (!isAuthenticated) { %>
+                 <span class="blinking" id="blink-flash">Login to order your meal now or Register to use this System !!!</span>   
+             <% } %>
+                
                 <% if (prods.length > 0) { %>
                     <div class="grid">
                         <% for (let product of prods) { %>

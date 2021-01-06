@@ -33,7 +33,7 @@ h3 {
   background: linear-gradient(90deg, rgb(233, 31, 31), rgb(243, 189, 10), rgb(253, 62, 62));
   background-repeat: no-repeat;
   background-size: 80%;
-  animation: animate 10s linear infinite;
+  animation: animate 5s linear infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(197, 48, 73, 0);
 }

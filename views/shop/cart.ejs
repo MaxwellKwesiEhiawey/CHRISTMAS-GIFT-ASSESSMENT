@@ -9,9 +9,8 @@
             <% if (products.length > 0) { %>
                 <div id="cart-item-container">
                 <h1 data-v-5a78baf3="" class="text-center cart-text m-auto">Your Cart</h1>
-                <table id="cart-item-head">
-                        <tr>
-                            <th>Meal</th>
+                <table id="cart-item-head"> 
+                        <tr><th>Meal</th>
                             <th>Meal Name</th>
                             <th>Price</th>
                             <th>Quantity</th>
@@ -59,7 +58,7 @@
                 </div>
             </div>
             <% } else { %>
-                <h1>No Meal in Cart!</h1>
+                <h1 class="text-center">No Meal in Cart!</h1>
                 <div class="card__actions">
                     <a href="/products" class="btn">Please Go Pick Meal!</a>
                 </div>

@@ -86,3 +86,19 @@ input::-webkit-inner-spin-button {
   font-size: 10px;
   text-align: center;
 }
+.text-center{
+  
+    position: relative;
+    font-family: sans-serif;
+    text-transform:capitalize;
+    font-size: 2em;
+    font-style: italic;
+    letter-spacing: 4px;
+    overflow: hidden;
+    background: linear-gradient(90deg, rgb(233, 31, 31), rgb(243, 189, 10), rgb(253, 62, 62));
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 5s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(197, 48, 73, 0);
+  }

@@ -7,9 +7,9 @@
         <%- include('../includes/navigation.ejs') %>
         <main>
             <% if (orders.length <= 0) { %>
-                <h1>Nothing there!</h1>
+                <h1 class="text-center">No Food Ordered yet!</h1>
                 <div class="card__actions">
-                    <a href="/products" class="btn">Please Go Pick Meal</a>
+                    <a href="/products" class="btn">Please Go Pick Meal!</a>
                 </div>
             <% } else { %>
                 <ul class="orders">
@@ -34,7 +34,7 @@
                                     <td><h1><%= p.quantity %></h1></td>
                                     <td> <h1 id='item-total'>GH₵ <%= p.product.price * p.quantity %></h1></td>
                                     <td><h1><%= order.user.email %></h1></td>
-                                    <td><h1>2020-12-13 12:00</h1></td>
+                                    <td><h1><%= order.date %></h1></td>
                                 <td class="status"> 
                                     <div class="form-control">
                                         <label for="status"></label>
