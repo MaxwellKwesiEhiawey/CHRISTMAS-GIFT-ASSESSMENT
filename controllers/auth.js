@@ -37,7 +37,7 @@ exports.postLogin = (req, res, next) => {
     .then(user => {
      const isUserValid = !user;
       if (isUserValid) {
-        req.flash('error', 'Invalid email or password.');
+        req.flash('error', 'Invalid email or User does not exist.');
         return res.redirect('/login');
       }
       
@@ -61,7 +61,7 @@ exports.postLogin = (req, res, next) => {
             });
           }
           
-          req.flash('error', 'Invalid email or password.');
+          req.flash('error', 'Invalid password.');
           res.redirect('/login');
         })
         .catch(err => {
